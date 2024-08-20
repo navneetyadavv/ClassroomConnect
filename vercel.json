@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "dist/**",
+        "use": "@vercel/static"
+      }
+    ],
+  
+    "rewrites": [{ "source": "/(.*)", "destination": "server.js" }]
+  }
