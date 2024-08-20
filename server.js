@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import classroomRouter from './routes/classroomRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import authRouter from './routes/authRouter.js';
@@ -12,6 +13,9 @@ import { seedPrincipal } from './services/principalService.js';
 dotenv.config();
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.resolve(__dirname, 'dist')));
 
@@ -39,5 +43,5 @@ seedPrincipal();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log("listnening on port:  ", PORT)
+    console.log("listening on port:  ", PORT)
 });
